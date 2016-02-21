@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="~/Content/materialize/css/materialize.css" />
+    <style>
+        .full-width {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+
+        </div>
+        <div class="row">
+
+            <div class="col m8">
+                <img class="full-width" src="~/Content/Images/robotarm.jpg" />
+
+            </div>
+            <div class="col m4">
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="RotateBaseAntiClockwise">Rotate base anti-clockwise</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="RotateBaseClockwise">Rotate base clockwise</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="ShoulderUp">Shoulder Up</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="ShoulderDown">Shoulder Down</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="ElbowUp">Elbow Up</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="ElbowDown">Elbow Down</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="WristUp">Wrist Up</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="WristDown">Wrist Down</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="GripOpen">Grip Open</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="GripClose">Grip Close</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="LightOn">Light On</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m12">
+                        <button class="btn waves-effect waves-light full-width" id="LightOff">Light Off</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Content/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Content/Scripts/materialize/materialize.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("button").click(function () {
+                var id = this.id
+                var data = JSON.stringify({ "action": id });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/robotarm",
+                    data: data,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json'
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
