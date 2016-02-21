@@ -40,8 +40,8 @@ namespace RoboArm.Device
                 {RobotArmCmds.ElbowDown, new byte[] {16, 0, 0}},
                 {RobotArmCmds.WristUp, new byte[] {8, 0, 0}},
                 {RobotArmCmds.WristDown, new byte[] {4, 0, 0}},
-                {RobotArmCmds.GripOpen, new byte[] {2, 0, 0}},
-                {RobotArmCmds.GripClose, new byte[] {1, 0, 0}},
+                {RobotArmCmds.GripOpen, new byte[] {1, 0, 0}},
+                {RobotArmCmds.GripClose, new byte[] {2, 0, 0}},
                 {RobotArmCmds.LightOn, new byte[] {0, 0, 1}},
                 {RobotArmCmds.LightOff, new byte[] {0,0,0}}
             };
