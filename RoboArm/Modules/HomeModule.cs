@@ -33,7 +33,34 @@ namespace RoboArm.Modules
                         rb.Initilise();
                         rb.SendCommand(cmd);
                     }
-                    return HttpStatusCode.OK;
+                    return Response.AsJson<string>("Done", HttpStatusCode.Accepted);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("error :" + e.Message);
+                    throw e;
+                }
+            };
+
+            Post["/robotarm/reset"] = (ctx) =>
+            {
+                try
+                {
+                    Console.WriteLine("HTTP POST Request: RobotArm");
+                    var history = this.Bind<string[]>(); //Breakpoint
+
+                    foreach (var item in history.Reverse())
+                    {
+                        var cmd = (Device.RobotArmCmds)Enum.Parse(typeof(Device.RobotArmCmds), item, true);
+                        
+                        using (var rb = new Device.UsbRobotArm())
+                        {
+                            rb.Initilise();
+                            rb.SendCommand(cmd, true);
+                        }
+                    }
+
+                    return Response.AsJson<string>("Done", HttpStatusCode.Accepted);
                 }
                 catch (Exception e)
                 {

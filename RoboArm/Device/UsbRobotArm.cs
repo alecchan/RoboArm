@@ -116,9 +116,23 @@ namespace RoboArm.Device
                                                   MonoUsbSessionHandle.LastErrorString));
         }
 
-        public void SendCommand(RobotArmCmds cmd)
+        public void SendCommand(RobotArmCmds cmd, bool reverse = false)
         {
-            var data = CmdToUsbInstruction[cmd];
+            RobotArmCmds cmdToUse = cmd;
+
+            if (reverse)
+            {
+                if (((int)cmdToUse) % 2 == 0)
+                {
+                    cmdToUse = cmdToUse + 1;
+                }
+                else
+                {
+                    cmdToUse = cmdToUse - 1;
+                }
+            }
+
+            var data = CmdToUsbInstruction[cmdToUse];
             SendCommand(data, 1000);
         }
 
@@ -172,6 +186,7 @@ namespace RoboArm.Device
                 object data2 = new byte[] { 0, 0, 0 };
                 MonoUsbControlSetupHandle controlSetupHandle2 = new MonoUsbControlSetupHandle(requestType, request, 0x100, 0, data2, 3);
                 ret = ControlTransfer(myDeviceHandle, controlSetupHandle2, 1000);
+                Thread.Sleep(500);
                 if (ret > 0)
                 {
                     Console.WriteLine("\nSuccess!\n");

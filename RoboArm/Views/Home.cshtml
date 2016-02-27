@@ -6,82 +6,195 @@
     <title></title>
 
     <link rel="stylesheet" href="~/Content/materialize/css/materialize.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
     <style>
+        h1 {
+            color: darkgray;
+            text-transform: capitalize;
+        }
+
+        .btn {
+            letter-spacing: normal;
+            text-transform: none;
+            padding: 0 1rem;
+        }
+
         .full-width {
             width: 100%;
         }
+
+        .box .middle {
+            width: 150px;
+            padding: 15px 10px;
+            text-align: right;
+        }
+
+        .box .title {
+            font-size: 1.25em;
+        }
+
+        .row {
+            margin-bottom: 1em;
+        }
+
+        .panel {
+            border-radius: 5px;
+            border-color: #26a69a;
+            border-width: 1px;
+            border-style: solid;
+            padding: 10px;
+        }
+
+        .robot-bg {
+            background-image: url("/Content/Images/robotarm.jpg");
+            background-position-x: right;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 400px;
+        }
+
+        .recording-ctrls {
+            margin-top: 2em;
+            text-align: center;
+        }
+
+            .recording-ctrls button {
+                margin: 1em 0.5em;
+            }
+
+            .recording-ctrls i {
+                font-size: 1em;
+            }
+
+            .recording #record i {
+                color: red;
+            }
+
+            .recording-ctrls .tape-title {
+                text-align: center;
+            }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-
+            <h1>Owl USB Robot Arm</h1>
         </div>
-        <div class="row">
+        <div class="content row">
 
-            <div class="col m8">
-                <img class="full-width" src="~/Content/Images/robotarm.jpg" />
+            <div class="col m4 arm-ctrls">
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Light</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="LightOn" title="Light On"><i class="fa fa-toggle-on"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="LightOff" title="Light Off"><i class="fa fa-toggle-off"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Grip</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="GripOpen" title="Grip Open"><i class="fa fa-hand-paper-o"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="GripClose" title="Grip Close"><i class="fa fa-hand-rock-o"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Wrist</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="WristUp" title="Wrist Up"><i class="fa fa-arrow-up"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="WristDown" title="Wrist Down"><i class="fa fa-arrow-down"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Elbow</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="ElbowUp" title="Elbow Up"><i class="fa fa-arrow-up"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="ElbowDown" title="Elbow Down"><i class="fa fa-arrow-down"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Shoulder</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="ShoulderUp" title="Shoulder Up"><i class="fa fa-arrow-up"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="ShoulderDown" title="Shoulder Down"><i class="fa fa-arrow-down"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="box">
+                        <div class="row">
+                            <div class="col m6 middle">
+                                <label class="title">Rotate Base</label>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="RotateBaseAntiClockwise" title="Rotate base anti-clockwise"><i class="fa fa-undo"></i></button>
+                            </div>
+                            <div class="col m3">
+                                <button class="btn-floating btn-large waves-effect waves-light" id="RotateBaseClockwise" title="Rotate base clockwise"><i class="fa fa-repeat"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col m4">
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="RotateBaseAntiClockwise">Rotate base anti-clockwise</button>
+            <div class="col m8">
+                <div class="robot-bg"></div>
+
+                <div class="row recording-ctrls recording">
+                    <div>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="rewind" title="Rewind"><i class="fa fa-fast-backward"></i> </button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="back" title="Back"><i class="fa fa-backward"></i> </button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="stop" title="Stop"><i class="fa fa-stop"></i> </button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="play" title="Play"><i class="fa fa-play"></i> </button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="clear" title="Clear"><i class="fa fa-trash"></i> </button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="record" title="Record"><i class="fa fa-circle"></i></button>
+                        <button class="btn-floating btn-small waves-effect waves-light" id="save" title="Save"><i class="fa fa-save"></i> </button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="RotateBaseClockwise">Rotate base clockwise</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="ShoulderUp">Shoulder Up</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="ShoulderDown">Shoulder Down</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="ElbowUp">Elbow Up</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="ElbowDown">Elbow Down</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="WristUp">Wrist Up</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="WristDown">Wrist Down</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="GripOpen">Grip Open</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="GripClose">Grip Close</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="LightOn">Light On</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col m12">
-                        <button class="btn waves-effect waves-light full-width" id="LightOff">Light Off</button>
+                    <div class="tape-title">
+                        <label id="tapeTitle">no existing recording</label>
                     </div>
                 </div>
             </div>
@@ -89,22 +202,8 @@
     </div>
     <script src="~/Content/Scripts/jquery-2.2.0.min.js"></script>
     <script src="~/Content/Scripts/materialize/materialize.js"></script>
+    <script src="~/Content/Scripts/robot.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-
-            $("button").click(function () {
-                var id = this.id
-                var data = JSON.stringify({ "action": id });
-
-                $.ajax({
-                    type: "POST",
-                    url: "/robotarm",
-                    data: data,
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json'
-                });
-            });
-        });
 
     </script>
 </body>
